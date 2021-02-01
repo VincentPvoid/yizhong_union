@@ -19,11 +19,22 @@
             <view class="bottom_con">
               <view class="left_con">
                 <p v-if="item.number">规模：{{ item.number }}</p>
-                <slot name="price_con"></slot>
+                <!-- <slot name="price_con"></slot> -->
+
+                <view class="price_con" v-if="item.price">
+                  <p class="del-text">原价：{{ item.oriPrice }}</p>
+                  <p class="count">已售：{{ item.count }}</p>
+                  <p class="price">
+                    ¥<span class="big-text">{{ item.price }} </span>
+                  </p>
+                </view>
               </view>
               <view class="right_con">
                 <p v-if="item.location">{{ item.location }}</p>
-                <slot name="btn"></slot>
+                <!-- <slot name="btn"></slot> -->
+                <view class="btn_con" v-else>
+                  <span class="btn">立即报名</span>
+                </view>
               </view>
             </view>
           </view>
@@ -51,7 +62,7 @@ export default {
 <style lang="scss" scoped>
 .content {
   border-top: 1rpx solid #eee;
-  padding-bottom:10rpx;
+  padding-bottom: 10rpx;
 }
 .list_item {
   display: flex;
@@ -78,11 +89,24 @@ export default {
   .bottom_con {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     .right_con {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
     }
   }
+  .price {
+    color: #f40;
+  }
+  .btn {
+  // position: absolute;
+  display: inline-block;
+  background: #20a937;
+  color: #fff;
+  padding: 5rpx 15rpx;
+  border-radius: 12rpx;
+  line-height: 1.5;
+}
 }
 </style>

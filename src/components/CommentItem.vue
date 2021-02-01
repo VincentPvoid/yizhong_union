@@ -1,26 +1,27 @@
 <template>
   <view class="list_con">
-    <u-row
+    <view
       class="comment_item"
-      v-for="item in list"
+      v-for="(item, index) in list"
+      :key="index"
       style="align-items: flex-start"
     >
-      <u-col span="2" class="avatar_con">
+      <view class="avatar_con">
         <image
           class="avatar"
           src="../static/imgs/avatar_1.png"
           mode="widthFix"
         ></image>
-      </u-col>
-      <u-col span="10" class="comment_detail_con">
+      </view>
+      <view class="comment_detail_con">
         <view class="user_name">{{ item.user_name }} </view>
         <u-rate :current="item.stars" :disabled="true"></u-rate>
         <view class="post_date">{{ item.time }}发布</view>
         <view class="comment_detail">
           {{ item.detail }}
         </view>
-      </u-col>
-    </u-row>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -60,6 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 .comment_item {
+  display:flex;
   padding: 40rpx 0;
   border-bottom: 1rpx solid #eee;
   .user_name {
@@ -79,8 +81,15 @@ export default {
       margin: 20rpx 0;
     }
   }
+  .avatar_con {
+    width: 100rpx;
+    height: 100rpx;
+    margin-right: 20rpx;
+    image {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
-.avatar {
-  width: 100%;
-}
+
 </style>

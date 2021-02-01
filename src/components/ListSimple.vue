@@ -1,34 +1,61 @@
 <template>
   <view class="content">
-    <u-row gutter="20" class="list_item">
-      <u-col span="2" class="avatar_con">
-        <image
-          class="avatar"
-          src="../static/imgs/avatar_1.png"
-          mode="widthFix"
-        ></image>
-      </u-col>
-      <u-col span="7" class="">
-        <p class="friend_name main-text">盟友名称</p>
-        <p>行业：新能源</p>
-      </u-col>
+    <view v-if="column == 1" class="column">
+      <view
+        class="list_item"
+        v-for="item in list"
+        :style="{ width: `${100 / column}%` }"
+      >
+        <view class="avatar_con">
+          <u-avatar src="../static/imgs/avatar_1.png" class="avatar"></u-avatar>
+        </view>
+        <view class="middle_con">
+          <p class="friend_name main-text">{{ item.name }}</p>
+          <p>{{ item.bio }}</p>
+        </view>
 
-      <u-col span="3" class="right_con">
-        <p class="btn">联系TA</p>
-        <p>1.6KM</p>
-      </u-col>
-    </u-row>
+        <view class="right_con">
+          <p class="btn" v-if="item.tel">联系TA</p>
+          <p>{{ item.location }}</p>
+        </view>
+      </view>
+    </view>
+
+    <view v-else class="column">
+      <navigator
+        class="list_item"
+        v-for="item in list"
+        :style="{ width: `${100 / column}%` }"
+        url="/pages/locationdetail/locationdetail"
+      >
+        <view class="img_con">
+          <image src="../static/imgs/location_img1.jpg" class="img"></image>
+        </view>
+
+        <view class="detail_con">
+          <h3 class="title main-text">特斯拉</h3>
+          <p>行业：新能源</p>
+          <view class="bottom-text">
+            <p>{{ item.location }}</p>
+          </view>
+        </view>
+      </navigator>
+    </view>
   </view>
 </template>
 
 <script>
 export default {
-  props:{
-    list:{
-      type:Array,
-      default:() =>[]
-    }
-  }
+  props: {
+    list: {
+      type: Array,
+      default: () => [],
+    },
+    column: {
+      type: Number,
+      default: 1,
+    },
+  },
 };
 </script>
 
@@ -42,22 +69,56 @@ export default {
 }
 .content {
   border-top: 1rpx solid #eee;
-}
-.list_item {
-  padding: 20rpx 20rpx;
-  border-bottom:1rpx solid #eee;
-  color:#959595;
-  line-height: 1.8;
-  .avatar {
+  .column {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
   }
-  .friend_name{
-    font-size:36rpx;
+}
+.list_item {
+  position: relative;
+  display: flex;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+  color: #959595;
+  font-size: 20rpx;
+  line-height: 1.5;
+  box-sizing: border-box;
+  .avatar {
+    display: block;
+    // width: 100rpx;
+    margin-right: 15rpx;
   }
-  .right_con{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  .middle_con {
+    flex: 1;
+  }
+  .friend_name {
+    font-size: 32rpx;
+  }
+  .right_con {
+    text-align: center;
+  }
+  .img_con {
+    width: 50%;
+    .img {
+      max-width: 150rpx;
+      max-height: 150rpx;
+      min-width: 150rpx;
+      min-height: 150rpx;
+      margin-right: 10rpx;
+    }
+  }
+  .title {
+    font-size: 36rpx;
+  }
+  .detail_con {
+    font-size: 20rpx;
+  }
+  .bottom-text {
+    position: absolute;
+    right: 15rpx;
+    bottom: 15rpx;
+    font-size: 16rpx;
   }
 }
 </style>

@@ -84,6 +84,9 @@ export default {
   background: #eee;
   padding: 10rpx 30rpx;
   margin: 30rpx 0;
+  width:100%;
+  height:90rpx;
+  box-sizing: border-box;
   .unit{
     position:absolute;
     right:.5em;

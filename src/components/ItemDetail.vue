@@ -26,16 +26,16 @@
     </view>
 
     <view class="main_con">
-      <u-row class="top_con" style="align-items: flex-start">
-        <u-col span="2" class="avatar_con">
+      <view class="top_con" >
+        <!-- <view class="avatar_con"> -->
           <image
             src="../static/imgs/avatar_1.png"
             class="img"
             mode="widthFix"
           ></image>
-        </u-col>
-        <u-col span="8" class="middle_con">
-          <view class="">
+        <!-- </view> -->
+        <view class="middle_con">
+          <view>
             <h2 class="store_name">{{ item.name }}</h2>
             <p v-if="item.trade">行业：{{ item.trade }}</p>
             <p v-if="item.focus">{{ item.focus }} 人关注</p>
@@ -46,9 +46,9 @@
             <p>参与人数：{{ item.count }}人</p>
           </div>
           <div class="title_detail" v-else-if="item.createTime">
-            <p>服务：{{item.offer}} </p>
-            <p>创办时间：{{item.createTime}} </p>
-            <p>办学规模：{{item.size}} </p>
+            <p>服务：{{ item.offer }}</p>
+            <p>创办时间：{{ item.createTime }}</p>
+            <p>办学规模：{{ item.size }}</p>
             <p class="tel">
               校区电话：{{ item.tel }}
               <span class="btn">立即拨号</span>
@@ -59,11 +59,11 @@
             地址：{{ item.location }}
             <span class="btn">立即拨号</span>
           </div>
-        </u-col>
-        <view class="rate_con"  v-if="item.rate">
+        </view>
+        <view class="rate_con" v-if="item.rate">
           <u-rate :current="item.rate" :disabled="true"></u-rate>
         </view>
-      </u-row>
+      </view>
 
       <view class="tags_con">
         <u-tabs
@@ -84,7 +84,7 @@
 
       <view class="course_con" id="course_con">
         <view class="title">
-          <span class="main-text">{{tags[1].name}}</span>
+          <span class="main-text">{{ tags[1].name }}</span>
           <span>全部</span>
         </view>
 
@@ -95,7 +95,7 @@
 
       <view class="course_con" id="comments_con">
         <view class="title">
-          <span class="main-text">{{tags[2].name}}</span>
+          <span class="main-text">{{ tags[2].name }}</span>
           <span>全部</span>
         </view>
 
@@ -149,7 +149,7 @@ export default {
         offer: "中小学辅导、英语、艺术",
         tel: 8888888,
         location: "深圳市龙岗区南联街道XX号",
-        size:'200平方米',
+        size: "200平方米",
         rate: 5,
         // time: "01.09-01.20",
         count: 334,
@@ -249,17 +249,20 @@ export default {
 .main_con {
   padding: 40rpx 0 0;
   .top_con {
-    position:relative;
-    // display: flex;
+    position: relative;
+    display: flex;
     font-size: 20rpx;
-    padding: 0 50rpx;
+    padding: 0 30rpx;
+    max-height: 600rpx;
+    box-sizing: border-box;
     .avatar_con {
       display: flex;
     }
     .img {
-      // width:100%;
-      // height: 100rpx;
-      // margin-right: 25rpx;
+      display: block;
+      width: 100rpx;
+      height: 100rpx;
+      margin-right: 15rpx;
     }
     .store_name {
       font-size: 36rpx;
@@ -275,21 +278,21 @@ export default {
     }
     .rate_con {
       position: absolute;
-      right:30rpx;
-      top:20rpx;
+      right: 30rpx;
+      top: 20rpx;
     }
     .tel {
       position: relative;
       .btn {
         bottom: -5rpx;
-        right: 3em;
+        right: 2em;
       }
     }
     .address_con {
       position: relative;
       .btn {
         bottom: -5rpx;
-        right: -6em;
+        right: -7em;
       }
     }
   }

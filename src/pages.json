@@ -65,6 +65,24 @@
       "style": {
         "navigationBarTitleText": "升学教育"
       }
+    },
+    {
+      "path": "pages/educationdetail/educationdetail",
+      "style": {
+        "navigationBarTitleText": "机构中心"
+      }
+    },
+    {
+      "path": "pages/locationdetail/locationdetail",
+      "style": {
+        "navigationBarTitleText": "盟商详情"
+      }
+    },
+    {
+      "path": "pages/becomefounder/becomefounder",
+      "style": {
+        "navigationBarTitleText": "成为创始人"
+      }
     }
   ],
   "globalStyle": {

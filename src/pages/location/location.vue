@@ -4,8 +4,12 @@
       <TopTabs :list="tags" :current.sync="current" />
     </view>
 
-    <view class="list_con">
+    <view class="list_con" v-if="current === 0">
       <ListSimple :list="friendsList" />
+    </view>
+
+    <view class="list_con" v-if="current === 1">
+      <ListSimple :list="friendsList" :column="2" />
     </view>
 
 
@@ -38,6 +42,22 @@ export default {
       storeList:[], // 盟商列表
     };
   },
+  created(){
+    this.friendsList = [
+      {
+        name:'盟友名称',
+        bio:'行业：新能源',
+        tel:12321312123,
+        location:'1.1KM'
+      },
+      {
+        name:'盟友名称',
+        bio:'行业：新能源',
+        tel:12321312123,
+        location:'1.1KM'
+      }
+    ]
+  }
 };
 </script>
 

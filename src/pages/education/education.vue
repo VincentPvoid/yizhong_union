@@ -63,7 +63,7 @@ export default {
     setTimeout(() => {
       this.list = [
         {
-          url:'/pages/allincedetail/allincedetail',
+          url:'/pages/educationdetail/educationdetail',
           title: "XXX商学院",
           bio: "服务类型：家居建材",
           number:500,
@@ -71,7 +71,7 @@ export default {
           imgSrc: "../static/imgs/life_img1.jpg",
         },
         {
-          url:'/pages/allincedetail/allincedetail',
+          url:'/pages/educationdetail/educationdetail',
           title: "XXX财税记账有限公司",
           bio: "服务类型：家居建材",
           number:100,
@@ -79,7 +79,7 @@ export default {
           imgSrc: "../static/imgs/life_img1.jpg",
         },
         {
-          url:'/pages/allincedetail/allincedetail',
+          url:'/pages/educationdetail/educationdetail',
           title: "XXX财税记账有限公司",
           bio: "服务类型：家居建材",
           number:100,
@@ -87,7 +87,7 @@ export default {
           imgSrc: "../static/imgs/life_img1.jpg",
         },
         {
-          url:'/pages/allincedetail/allincedetail',
+          url:'/pages/educationdetail/educationdetail',
           title: "XXX财税记账有限公司",
           bio: "服务类型：家居建材",
           number:100,
@@ -95,7 +95,7 @@ export default {
           imgSrc: "../static/imgs/life_img1.jpg",
         },
         {
-          url:'/pages/allincedetail/allincedetail',
+          url:'/pages/educationdetail/educationdetail',
           title: "XXX财税记账有限公司",
           bio: "服务类型：家居建材",
           number:100,

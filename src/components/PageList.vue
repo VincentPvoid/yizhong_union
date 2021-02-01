@@ -17,17 +17,17 @@
     </view>
 
     <view class="list_con">
-      <PageListItem v-for="item in list" :item="item">
-        <template v-slot:price_con v-if="item.price">
+      <PageListItem v-for="(item, index) in list" :item="item" :key="index">
+        <!-- <template v-slot:price_con>
           <p class="del-text">原价：{{ item.oriPrice }}</p>
           <p class="count">已售：{{ item.count }}</p>
           <p class="price">
             ¥<span class="big-text">{{ item.price }} </span>
           </p>
         </template>
-        <template v-slot:btn v-if="item.price">
+        <template v-slot:btn>
           <span class="btn">立即报名</span>
-        </template>
+        </template> -->
       </PageListItem>
     </view>
   </view>
@@ -83,23 +83,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.btn {
-  // position: absolute;
-  display: inline-block;
-  background: #20a937;
-  color: #fff;
-  padding: 5rpx 15rpx;
-  border-radius: 12rpx;
-  line-height: 1.5;
-}
+
 .dropdown_con {
   display: flex;
   span {
     display: inline-block;
     width: 50%;
   }
-}
-.price {
-  color: #f40;
 }
 </style>

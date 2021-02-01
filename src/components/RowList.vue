@@ -1,6 +1,6 @@
 <template>
   <view class="list_con">
-    <view class="list_item" v-for="item in list">
+    <view class="list_item" v-for="(item, index) in list" :key="index">
       <image :src="item.imgSrc" mode="widthFix"></image>
       <view class="">
         <p class="course_name main-text">{{ item.title }}</p>
