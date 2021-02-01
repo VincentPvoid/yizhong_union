@@ -1,0 +1,131 @@
+{
+  "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "先舍后得"
+      }
+    },
+    {
+      "path": "pages/location/location",
+      "style": {
+        "navigationBarTitleText": "附近盟友"
+      }
+    },
+    {
+      "path": "pages/life/life",
+      "style": {
+        "navigationBarTitleText": "幸福生活"
+      }
+    },
+    {
+      "path": "pages/joinus/joinus",
+      "style": {
+        "navigationBarTitleText": "加入我们"
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationBarTitleText": "个人中心"
+      }
+    },
+    {
+      "path": "pages/lifedetail/lifedetail",
+      "style": {
+        "navigationBarTitleText": "活动详情"
+      }
+    },
+    {
+      "path": "pages/allince/allince",
+      "style": {
+        "navigationBarTitleText": "创业联盟"
+      }
+    },
+    {
+      "path": "pages/allincedetail/allincedetail",
+      "style": {
+        "navigationBarTitleText": "商家详情"
+      }
+    },
+    {
+      "path": "pages/engineering/engineering",
+      "style": {
+        "navigationBarTitleText": "工程联盟"
+      }
+    },
+    {
+      "path": "pages/engineeringdetail/engineeringdetail",
+      "style": {
+        "navigationBarTitleText": "商家中心"
+      }
+    },
+    {
+      "path": "pages/education/education",
+      "style": {
+        "navigationBarTitleText": "升学教育"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "先舍后得",
+    "navigationBarBackgroundColor": "#20a937"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#20a937",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "midButton": {
+      "text": "先舍后得",
+      "pagePath": "pages/index/index",
+      "iconPath": "static/icon/tabbar_fingerprint.png",
+      "selectedIconPath": "static/icon/tabbar_fingerprint.png"
+    },
+    "list": [
+      {
+        "pagePath": "pages/location/location",
+        "iconPath": "static/icon/tabbar_location.png",
+        "selectedIconPath": "static/icon/tabbar_location_choose.png",
+        "text": "附近盟友"
+      },
+      {
+        "pagePath": "pages/life/life",
+        "iconPath": "static/icon/tabbar_life.png",
+        "selectedIconPath": "static/icon/tabbar_life_choose.png",
+        "text": "幸福生活"
+      },
+      // #ifndef APP-PLUS  
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icon/tabbar_fingerprint.png",
+        "selectedIconPath": "static/icon/tabbar_fingerprint.png",
+        "text": "先舍后得"
+      },
+      // #endif  
+      {
+        "pagePath": "pages/joinus/joinus",
+        "iconPath": "static/icon/tabbar_join.png",
+        "selectedIconPath": "static/icon/tabbar_join_choose.png",
+        "text": "加入我们"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/icon/tabbar_mine.png",
+        "selectedIconPath": "static/icon/tabbar_mine_choose.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "easycom": {
+    // npm安装的方式不需要前面的"@/"，下载安装的方式需要"@/"
+    // npm安装方式
+    "autoscan": true,
+    "custom": {
+      "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+      // 下载安装方式
+      // "^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+    }
+  }
+}
