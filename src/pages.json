@@ -83,6 +83,12 @@
       "style": {
         "navigationBarTitleText": "成为创始人"
       }
+    },
+    {
+      "path": "pages/formsubmit/formsubmit",
+      "style": {
+        "navigationBarTitleText": "提交成功"
+      }
     }
   ],
   "globalStyle": {

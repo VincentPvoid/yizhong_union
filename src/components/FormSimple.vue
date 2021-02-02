@@ -1,54 +1,53 @@
 <template>
   <view class="content">
     <view class="title_con">
-      <h2>{{info.title}}</h2>
-      <p>{{info.sideTitle}}</p>
+      <h2>{{ info.title }}</h2>
+      <p>{{ info.sideTitle }}</p>
     </view>
     <view class="form_con">
       <u-form :model="form" ref="uForm">
-        <u-form-item class="form_item">
+        <view class="form_item">
           <u-input v-model="form.area" type="select" @click="showArea = true" />
           <u-picker
             mode="region"
             v-model="showArea"
             confirm-color="#20a937"
           ></u-picker>
-        </u-form-item>
+        </view>
 
-        <u-form-item class="form_item" v-if="info.tel">
+        <view class="form_item" v-if="info.tel">
           <u-input
             v-model="form.number"
             type="number"
             placeholder="请输入手机号码"
           />
-        </u-form-item>
+        </view>
 
-        <u-form-item class="form_item" v-else>
+        <view class="form_item" v-else style="padding-right: 3em">
           <u-input
             v-model="form.size"
             type="number"
-            placeholder="请输入房屋面积"
-            style="padding-right:2em"
+            placeholder="请输入房屋面积"          
           />
           <span class="unit">m²</span>
-        </u-form-item>
+        </view>
 
         <view>
-          <div class="btn-sumbit">{{info.btnText}}</div>
+          <div class="btn-sumbit">{{ info.btnText }}</div>
         </view>
       </u-form>
     </view>
 
-    <view class="add-tips">{{info.tips}}</view>
+    <view class="add-tips">{{ info.tips }}</view>
   </view>
 </template>
 
 <script>
 export default {
-  props:{
-    info:{
-      type:Object,
-    }
+  props: {
+    info: {
+      type: Object,
+    },
   },
   data() {
     return {
@@ -73,6 +72,7 @@ export default {
   h2 {
     font-size: 50rpx;
     color: #20a937;
+    font-weight: 700;
   }
   p {
     font-size: 30rpx;
@@ -84,14 +84,14 @@ export default {
   background: #eee;
   padding: 10rpx 30rpx;
   margin: 30rpx 0;
-  width:100%;
-  height:90rpx;
+  width: 100%;
+  height: 90rpx;
   box-sizing: border-box;
-  .unit{
-    position:absolute;
-    right:.5em;
-    top:.2em;
-    font-size:40rpx;
+  .unit {
+    position: absolute;
+    right: 0.5em;
+    top: 0.4em;
+    font-size: 40rpx;
   }
 }
 .btn-sumbit {
@@ -102,9 +102,9 @@ export default {
   color: #fff;
   letter-spacing: 8rpx;
 }
-.add-tips{
-  margin:20rpx 0;
+.add-tips {
+  margin: 20rpx 0;
   text-align: center;
-  color:#959595;
+  color: #959595;
 }
 </style>
