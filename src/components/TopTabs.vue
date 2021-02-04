@@ -8,6 +8,7 @@
       duration="0.2"
       bar-width="80"
       gutter="20"
+      :is-scroll="isScroll"
     ></u-tabs>
   </view>
 </template>
@@ -22,6 +23,10 @@ export default {
     current:{
       type:Number,
       default:0,
+    },
+    isScroll:{
+      type:Boolean,
+      default:true,
     }
   },
   data() {

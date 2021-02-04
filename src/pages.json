@@ -89,6 +89,24 @@
       "style": {
         "navigationBarTitleText": "提交成功"
       }
+    },
+    {
+      "path": "pages/myfavourite/myfavourite",
+      "style": {
+        "navigationBarTitleText": "收藏"
+      }
+    },
+    {
+      "path": "pages/myorders/myorders",
+      "style": {
+        "navigationBarTitleText": "我的订单"
+      }
+    },
+    {
+      "path": "pages/mycart/mycart",
+      "style": {
+        "navigationBarTitleText": "我的购物车"
+      }
     }
   ],
   "globalStyle": {
