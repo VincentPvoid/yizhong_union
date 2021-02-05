@@ -11,7 +11,9 @@
           <u-picker
             mode="region"
             v-model="showArea"
+            :default-region="[province, city, area]"
             confirm-color="#20a937"
+            @confirm="chooseArea"
           ></u-picker>
         </view>
 
@@ -52,10 +54,28 @@ export default {
   data() {
     return {
       form: {
-        area: "广东 深圳 南山区",
+        area: "广东省 深圳市 南山区",
       },
+      province:'广东省',
+      city:'深圳市',
+      area:'南山区',
       showArea: false,
     };
+  },
+  methods:{
+    chooseArea(e){
+      this.province = e.province.label;
+      this.city = e.city.label;
+      this.area = e.area.label;
+      this.form.area = this.localArea;
+    }
+  },
+  computed:{
+    localArea:{
+      get(){
+        return `${this.province} ${this.city} ${this.area}`
+      },
+    }
   },
 };
 </script>

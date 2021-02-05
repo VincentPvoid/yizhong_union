@@ -12,15 +12,14 @@
       <span class="good_name bold-text">{{ item.title }}</span>
       <span class="status green-text">等待发货</span>
     </view>
-    <u-row gutter="10" class="detail_con" style="align-items: flex-start">
-      <u-col
-        :span="showCheckbox ? 6 : 8"
+    <view class="detail_con">
+      <view
         class="img_con"
-        :style="`height:${showCheckbox ? '300rpx' : '250rpx'}`"
+        :class="{height300:showCheckbox, height250:!showCheckbox}"
       >
         <image src="../static/imgs/education_ad_1.png"></image>
-      </u-col>
-      <u-col :span="showCheckbox ? 6 : 4">
+      </view>
+      <!-- <u-col :span="showCheckbox ? 6 : 4"> -->
         <view class="good_info">
           <p>{{ item.bio }}</p>
           <view class="price_con">
@@ -33,8 +32,8 @@
             ></u-number-box>
           </view>
         </view>
-      </u-col>
-    </u-row>
+      <!-- </u-col> -->
+    </view>
 
     <view class="btns_con" v-if="!showCheckbox">
       <span class="btn">再次购买</span>
@@ -76,6 +75,14 @@ export default {
 <style lang="scss" scoped>
 $padding-LR: 50rpx;
 
+.height250{
+  height:250rpx;
+  flex:2;
+}
+.height300{
+  height:300rpx;
+  flex:1;
+}
 .green-text {
   color: #20a937;
 }
@@ -120,7 +127,7 @@ $padding-LR: 50rpx;
   justify-content: space-between;
   margin: 30rpx 0 0;
   .img_con {
-    flex: 2;
+    // flex: 2;
     display: flex;
     // height: 300rpx;
     // margin-right: 30rpx;
@@ -137,7 +144,7 @@ $padding-LR: 50rpx;
     color: #959595;
     text-align: right;
     .price_con {
-      margin-top: 2em;
+      margin: 2em 0;
       color: #f40;
       span {
         font-size: 50rpx;

@@ -42,9 +42,9 @@ export default {
       type: Array,
       default: () => [],
     },
-    list: {
-      type: Array,
-      default: () => []
+    url: {
+      type: String,
+      default: ''
     },
   },
   components: {
@@ -72,12 +72,55 @@ export default {
           value: 4,
         },
       ],
+      list:[],
     };
   },
-  mounted() {
-    if (this.options1.length) {
-      this.options1.map((item, index) => (item.label = item.name));
-    }
+  created() {
+    
+    setTimeout(() => {
+      this.list = [
+        {
+          url:'/pages/allincedetail/allincedetail',
+          title: "XXX商学院",
+          bio: "服务类型：家居建材",
+          number:500,
+          location:'小于500M',
+          imgSrc: "../static/imgs/life_img1.jpg",
+        },
+        {
+          url:'/pages/allincedetail/allincedetail',
+          title: "XXX财税记账有限公司",
+          bio: "服务类型：家居建材",
+          number:100,
+          location:'1.1KM',
+          imgSrc: "../static/imgs/life_img1.jpg",
+        },
+        {
+          url:'/pages/allincedetail/allincedetail',
+          title: "XXX财税记账有限公司",
+          bio: "服务类型：家居建材",
+          number:100,
+          location:'1.1KM',
+          imgSrc: "../static/imgs/life_img1.jpg",
+        },
+        {
+          url:'/pages/allincedetail/allincedetail',
+          title: "XXX财税记账有限公司",
+          bio: "服务类型：家居建材",
+          number:100,
+          location:'1.1KM',
+          imgSrc: "../static/imgs/life_img1.jpg",
+        },
+        {
+          url:'/pages/allincedetail/allincedetail',
+          title: "XXX财税记账有限公司",
+          bio: "服务类型：家居建材",
+          number:100,
+          location:'1.1KM',
+          imgSrc: "../static/imgs/life_img1.jpg",
+        },
+      ];
+    }, 500);
   },
 };
 </script>

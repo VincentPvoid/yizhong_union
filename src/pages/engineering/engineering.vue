@@ -2,10 +2,17 @@
   <view class="content">
     <view class="search_con">
       <view class="location" @click="showArea = true">
-        <u-picker mode="region" v-model="showArea" confirm-color="#20a937">
+        <u-picker
+          mode="region"
+          v-model="showArea"
+          confirm-color="#20a937"
+          :params="pickerParams"
+          :default-region="[province, city]"
+          @confirm="chooseCity"
+        >
         </u-picker>
         <u-icon name="map-fill" color="#20a937" size="36"></u-icon>
-        <span>深圳市</span>
+        <span>{{ city }}</span>
       </view>
       <view class="search_wapper">
         <input type="text" class="search_input" placeholder="搜索" />
@@ -16,16 +23,19 @@
       <TopTabs :list="tags" :current.sync="current" />
     </view>
 
-    <view class="list_con" v-if="(current === 0||current === 1||current === 2)">
-      <PageList :options1="tags" :list="list" />
+    <view
+      class="list_con"
+      v-if="current === 0 || current === 1 || current === 2"
+    >
+      <PageList :options1="tags" :url="url" />
     </view>
 
     <view v-if="current === 3" class="cost_con">
-      <FormSimple :info="info" />
+      <FormSimple :info="info1" key='form1' />
     </view>
 
     <view v-if="current === 4" class="cost_con">
-      <FormSimple :info="info" />
+      <FormSimple :info="info2" key="form2" />
     </view>
   </view>
 </template>
@@ -44,6 +54,14 @@ export default {
   data() {
     return {
       showArea: false, // 是否显示选择地区菜单
+      pickerParams: {
+        // picker显示参数
+        province: true,
+        city: true,
+        area: false,
+      },
+      province: "广东省",
+      city: "深圳市", // 当前选中的城市
       tags: [
         {
           name: "全部",
@@ -62,77 +80,55 @@ export default {
         },
       ],
       current: 0,
-      list: [],
-      info: {}, // 要显示的表单内容
+      url: "",
+      // info: {}, // 要显示的表单内容
+      info1: {
+        title: "我家装修要花多少钱？",
+        sideTitle: "累计超过7778854次估价请求",
+        btnText: "查询报价",
+        tips: "提交之后会有专属客服为您提供设计方案",
+      },
+      info2: {
+        title: "免费效果图设计 只需2步",
+        sideTitle: "房屋所在城市",
+        btnText: "获取免费设计方案",
+        tips: "提交之后会有资深设计为您提供设计方案",
+        tel: 111,
+      },
     };
   },
-  mounted() {
-    setTimeout(() => {
-      this.list = [
-        {
-          url: "/pages/engineeringdetail/engineeringdetail",
-          title: "XXX商学院",
-          bio: "服务类型：家居建材",
-          number: 500,
-          location: "小于500M",
-          imgSrc: "../static/imgs/life_img1.jpg",
-        },
-        {
-          url: "/pages/engineeringdetail/engineeringdetail",
-          title: "XXX财税记账有限公司",
-          bio: "服务类型：家居建材",
-          number: 100,
-          location: "1.1KM",
-          imgSrc: "../static/imgs/life_img1.jpg",
-        },
-        {
-          url: "/pages/engineeringdetail/engineeringdetail",
-          title: "XXX财税记账有限公司",
-          bio: "服务类型：家居建材",
-          number: 100,
-          location: "1.1KM",
-          imgSrc: "../static/imgs/life_img1.jpg",
-        },
-        {
-          url: "/pages/engineeringdetail/engineeringdetail",
-          title: "XXX财税记账有限公司",
-          bio: "服务类型：家居建材",
-          number: 100,
-          location: "1.1KM",
-          imgSrc: "../static/imgs/life_img1.jpg",
-        },
-        {
-          url: "/pages/engineeringdetail/engineeringdetail",
-          title: "XXX财税记账有限公司",
-          bio: "服务类型：家居建材",
-          number: 100,
-          location: "1.1KM",
-          imgSrc: "../static/imgs/life_img1.jpg",
-        },
-      ];
-    }, 500);
-  },
-  watch: {
-    current(val) {
-      if (val === 3) {
-        this.info = {
-          title: "我家装修要花多少钱？",
-          sideTitle: "累计超过7778854次估价请求",
-          btnText: "查询报价",
-          tips: "提交之后会有专属客服为您提供设计方案",
-        };
-      }
-      if (val === 4) {
-        this.info = {
-          title: "免费效果图设计 只需2步",
-          sideTitle: "房屋所在城市",
-          btnText: "获取免费设计方案",
-          tips: "提交之后会有资深设计为您提供设计方案",
-          tel:111,
-        };
-      }
+  methods: {
+    chooseCity(e) {
+      this.province = e.province.label;
+      this.city = e.city.label;
     },
   },
+  created() {
+    if (this.tags.length) {
+      this.tags.map((item) => (item.label = item.name));
+    }
+  },
+  // watch: {
+  //   current(val) {
+  //     if (val === 3) {
+  //       this.info = {
+  //         title: "我家装修要花多少钱？",
+  //         sideTitle: "累计超过7778854次估价请求",
+  //         btnText: "查询报价",
+  //         tips: "提交之后会有专属客服为您提供设计方案",
+  //       };
+  //     }
+  //     if (val === 4) {
+  //       this.info = {
+  //         title: "免费效果图设计 只需2步",
+  //         sideTitle: "房屋所在城市",
+  //         btnText: "获取免费设计方案",
+  //         tips: "提交之后会有资深设计为您提供设计方案",
+  //         tel:111,
+  //       };
+  //     }
+  //   },
+  // },
 };
 </script>
 

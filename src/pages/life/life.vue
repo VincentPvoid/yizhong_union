@@ -2,9 +2,17 @@
   <view class="content">
     <view class="search_con">
       <view class="location" @click="showArea=true">
-        <u-picker mode="region" v-model="showArea" confirm-color="#20a937"> </u-picker>
+       <u-picker
+          mode="region"
+          v-model="showArea"
+          confirm-color="#20a937"
+          :params="pickerParams"
+          :default-region="[province,city]"
+          @confirm="chooseCity"
+        >
+        </u-picker>
         <u-icon name="map-fill" color="#20a937" size="36"></u-icon>
-        <span>深圳市</span>
+        <span>{{city}}</span>
       </view>
       <view class="search_wapper">
         <input type="text" class="search_input" placeholder="搜索" />
@@ -17,7 +25,7 @@
 
 
     <view class="list_con">
-      <PageList :options1="tags" :list="list" />
+      <PageList :options1="tags" :url="url" />
     </view>
 
 
@@ -38,6 +46,13 @@ export default {
   data() {
     return {
       showArea: false,
+      pickerParams: { // picker显示参数
+        province: true,
+        city: true,
+        area: false,
+      },
+      province:'广东省',
+      city:'深圳市', // 当前选中的城市
       tags: [
         {
           name: "全部",
@@ -59,59 +74,19 @@ export default {
         }
       ],
       current:0,
-      list:[]
+      url:'',
     };
   },
-  mounted(){
-    setTimeout(() => {
-      this.list = [
-        {
-          url:'/pages/lifedetail/lifedetail',
-          title: "丁校长学习中心",
-          bio: "产品描述产品描述产品描述产品描述",
-          oriPrice: 500,
-          price: 29.9,
-          count: 999,
-          imgSrc: "../static/imgs/life_img1.jpg",
-        },
-        {
-          url:'/pages/lifedetail/lifedetail',
-          title: "丁校长学习中心",
-          bio: "产品描述产品描述产品描述产品描述",
-          oriPrice: 1500,
-          price: 299.9,
-          count: 1999,
-          imgSrc: "../static/imgs/life_img2.jpg",
-        },
-        {
-          url:'/pages/lifedetail/lifedetail',
-          title: "丁校长学习中心",
-          bio: "产品描述产品描述产品描述产品描述",
-          oriPrice: 500,
-          price: 29.9,
-          count: 999,
-          imgSrc: "../static/imgs/life_img1.jpg",
-        },
-        {
-          url:'/pages/lifedetail/lifedetail',
-          title: "丁校长学习中心",
-          bio: "产品描述产品描述产品描述产品描述",
-          oriPrice: 300,
-          price: 129.9,
-          count: 99,
-          imgSrc: "../static/imgs/life_img2.jpg",
-        },
-        {
-          url:'/pages/lifedetail/lifedetail',
-          title: "丁校长学习中心",
-          bio: "产品描述产品描述产品描述产品描述",
-          oriPrice: 500,
-          price: 29.9,
-          count: 999,
-          imgSrc: "../static/imgs/life_img1.jpg",
-        },
-      ];
-    }, 500);
+  methods: {
+    chooseCity(e) {
+      this.province = e.province.label;
+      this.city = e.city.label;
+    },
+  },
+  created(){
+    if(this.tags.length){
+      this.tags.map(item => item.label = item.name)
+    }
   }
 };
 </script>

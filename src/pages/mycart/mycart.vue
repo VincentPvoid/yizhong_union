@@ -11,14 +11,16 @@
     </view>
 
     <view class="list_con">
-      <MyPageItem
-        v-for="item in list"
-        :key="item.id"
-        :item="item"
-        :showCheckbox="true"
-        @click.stop.native="chooseItem(item)"
-        :checked="isChecked(item)"
-      />
+      <view class="goods_list">
+        <MyPageItem
+          v-for="item in list"
+          :key="item.id"
+          :item="item"
+          :showCheckbox="true"
+          @click.stop.native="chooseItem(item)"
+          :checked="isChecked(item)"
+        />
+      </view>
     </view>
   </view>
 </template>
@@ -41,7 +43,7 @@ export default {
       ],
       current: 0,
       list: [],
-      chooseList:[],
+      chooseList: [],
     };
   },
   methods: {
